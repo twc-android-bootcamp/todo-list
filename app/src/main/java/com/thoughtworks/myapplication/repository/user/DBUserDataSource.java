@@ -13,8 +13,8 @@ import static androidx.room.OnConflictStrategy.REPLACE;
 
 @Dao
 public interface DBUserDataSource extends UserDataSource {
-    @Query("SELECT * FROM user WHERE name = :username")
-    Maybe<User> findByName(String username);
+    @Query("SELECT * FROM user WHERE name = :name")
+    Maybe<User> findByName(String name);
 
     @Insert(onConflict = REPLACE)
     Completable save(User user);

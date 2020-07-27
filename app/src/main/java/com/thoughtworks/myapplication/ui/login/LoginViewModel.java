@@ -41,14 +41,14 @@ public class LoginViewModel extends ViewModel {
                 .doOnComplete(() -> loginResult.setValue(new LoginResult(R.string.login_failed)))
                 .subscribe(user -> {
                     if (user == null) {
-                        loginResult.setValue(new LoginResult(R.string.login_failed));
+                        loginResult.postValue(new LoginResult(R.string.login_failed));
                         return;
                     }
                     if (user.getPassword().equals(password)) {
-                        loginResult.setValue(new LoginResult(new LoggedInUserView(user.getName())));
+                        loginResult.postValue(new LoginResult(new LoggedInUserView(user.getName())));
                         return;
                     }
-                    loginResult.setValue(new LoginResult(R.string.login_failed));
+                    loginResult.postValue(new LoginResult(R.string.login_failed));
                 });
     }
 

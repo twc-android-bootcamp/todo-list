@@ -11,7 +11,7 @@ public class UserRepositoryImpl implements UserRepository {
         this.dataSource = dataSource;
     }
 
-    public Maybe<User> findByName(String username) {
-        return dataSource.findByName(username);
+    public Maybe<User> findByName(String name) {
+        return dataSource.findByName(name);
     }
 }

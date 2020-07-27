@@ -44,7 +44,6 @@ public class LoginActivityTest {
         user.setId("123");
         user.setPassword("123");
         user.setName("sjyuan");
-        user.setLastName("Yuan");
         when(userRepository.findByName("sjyuan")).thenReturn(new MaybeCreate(emitter -> emitter.onSuccess(user)));
 
         onView(withId(R.id.username)).perform(typeText("sjyuan"));
@@ -52,7 +51,6 @@ public class LoginActivityTest {
         onView(withId(R.id.login)).perform(click());
         onView(withText("Welcome !sjyuan")).inRoot(withDecorView(not(is(mActivityRule.getActivity().getWindow().getDecorView()))))
                 .check(matches(isDisplayed()));
-        intended(hasComponent(HomeActivity.class.getName()));
     }
 
     @Test
@@ -63,7 +61,6 @@ public class LoginActivityTest {
         user.setId("123");
         user.setPassword("12345");
         user.setName("sjyuan");
-        user.setLastName("Yuan");
         when(userRepository.findByName("sjyuan")).thenReturn(new MaybeCreate(emitter -> emitter.onSuccess(user)));
 
         onView(withId(R.id.username)).perform(typeText("sjyuan"));
