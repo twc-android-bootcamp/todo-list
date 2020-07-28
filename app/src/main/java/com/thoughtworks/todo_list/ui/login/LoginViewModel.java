@@ -1,4 +1,4 @@
-package com.thoughtworks.myapplication.ui.login;
+package com.thoughtworks.todo_list.ui.login;
 
 import android.annotation.SuppressLint;
 import android.util.Patterns;
@@ -8,11 +8,10 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 
-import com.thoughtworks.myapplication.R;
-import com.thoughtworks.myapplication.repository.user.UserRepository;
-import com.thoughtworks.myapplication.repository.user.entity.User;
+import com.thoughtworks.todo_list.R;
+import com.thoughtworks.todo_list.repository.user.UserRepository;
+import com.thoughtworks.todo_list.repository.utils.Encryptor;
 
-import io.reactivex.Maybe;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
@@ -36,29 +35,28 @@ public class LoginViewModel extends ViewModel {
 
     @SuppressLint("CheckResult")
     public void login(String username, String password) {
-        Maybe<User> result = userRepository.findByName(username);
-        result.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
-                .doOnComplete(() -> loginResult.setValue(new LoginResult(R.string.login_failed)))
-                .subscribe(user -> {
-                    if (user == null) {
-                        loginResult.postValue(new LoginResult(R.string.login_failed));
+        userRepository.findByName(username).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+                .doOnComplete(() -> loginResult.setValue(new LoginResult(R.string.login_failed_username)))
+                .subscribe(u -> {
+                    if (u == null) {
+                        loginResult.postValue(new LoginResult(R.string.login_failed_username));
                         return;
                     }
-                    if (user.getPassword().equals(password)) {
-                        loginResult.postValue(new LoginResult(new LoggedInUserView(user.getName())));
+                    if (u.getPassword().equals(Encryptor.md5(password))) {
+                        loginResult.postValue(new LoginResult(new LoggedInUserView(u.getName())));
                         return;
                     }
-                    loginResult.postValue(new LoginResult(R.string.login_failed));
+                    loginResult.postValue(new LoginResult(R.string.login_failed_password));
                 });
     }
 
     public void loginDataChanged(String username, String password) {
         if (!isUserNameValid(username)) {
-            loginFormState.setValue(new LoginFormState(R.string.invalid_username, null));
+            loginFormState.postValue(new LoginFormState(R.string.invalid_username, null));
         } else if (!isPasswordValid(password)) {
-            loginFormState.setValue(new LoginFormState(null, R.string.invalid_password));
+            loginFormState.postValue(new LoginFormState(null, R.string.invalid_password));
         } else {
-            loginFormState.setValue(new LoginFormState(true));
+            loginFormState.postValue(new LoginFormState(true));
         }
     }
 

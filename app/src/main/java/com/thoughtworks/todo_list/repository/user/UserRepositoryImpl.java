@@ -1,7 +1,9 @@
-package com.thoughtworks.myapplication.repository.user;
+package com.thoughtworks.todo_list.repository.user;
 
-import com.thoughtworks.myapplication.repository.user.entity.User;
+import com.thoughtworks.todo_list.repository.user.entity.User;
+import com.thoughtworks.todo_list.repository.utils.Encryptor;
 
+import io.reactivex.Completable;
 import io.reactivex.Maybe;
 
 public class UserRepositoryImpl implements UserRepository {
@@ -13,5 +15,10 @@ public class UserRepositoryImpl implements UserRepository {
 
     public Maybe<User> findByName(String name) {
         return dataSource.findByName(name);
+    }
+
+    @Override
+    public Completable save(User user) {
+        return dataSource.save(user);
     }
 }

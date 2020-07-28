@@ -1,10 +1,10 @@
-package com.thoughtworks.myapplication.repository.user;
+package com.thoughtworks.todo_list.repository.user;
 
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
 
-import com.thoughtworks.myapplication.repository.user.entity.User;
+import com.thoughtworks.todo_list.repository.user.entity.User;
 
 import io.reactivex.Completable;
 import io.reactivex.Maybe;

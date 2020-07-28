@@ -1,4 +1,4 @@
-package com.thoughtworks.myapplication.ui.login;
+package com.thoughtworks.todo_list.ui.login;
 
 /**
  * Class exposing authenticated user details to the UI.

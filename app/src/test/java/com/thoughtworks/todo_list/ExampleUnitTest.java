@@ -1,4 +1,4 @@
-package com.thoughtworks.myapplication;
+package com.thoughtworks.todo_list;
 
 import org.junit.Test;
 

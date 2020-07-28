@@ -1,14 +1,14 @@
-package com.thoughtworks.myapplication;
+package com.thoughtworks.todo_list;
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
 import androidx.room.Room;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
 
-import com.thoughtworks.myapplication.repository.AppDatabase;
-import com.thoughtworks.myapplication.repository.user.UserRepository;
-import com.thoughtworks.myapplication.repository.user.UserRepositoryImpl;
-import com.thoughtworks.myapplication.repository.user.entity.User;
+import com.thoughtworks.todo_list.repository.AppDatabase;
+import com.thoughtworks.todo_list.repository.user.UserRepository;
+import com.thoughtworks.todo_list.repository.user.UserRepositoryImpl;
+import com.thoughtworks.todo_list.repository.user.entity.User;
 
 import org.junit.After;
 import org.junit.Before;
@@ -46,9 +46,9 @@ public class UserRepositoryTest {
         User savedUser = new User();
         savedUser.setName("sjyuan");
         savedUser.setPassword("123");
-        savedUser.setId("123");
+        savedUser.setId(1);
         appDatabase.userDBDataSource().save(savedUser).subscribeOn(Schedulers.io()).subscribe();
         userRepository.findByName("sjyuan").test()
-                .assertValue(user -> user.getId().equals(savedUser.getId()));
+                .assertValue(user -> user.getId() == savedUser.getId());
     }
 }

@@ -1,9 +1,9 @@
-package com.thoughtworks.myapplication;
+package com.thoughtworks.todo_list;
 
 import android.app.Application;
 
-import com.thoughtworks.myapplication.repository.user.UserRepository;
-import com.thoughtworks.myapplication.repository.user.UserRepositoryImpl;
+import com.thoughtworks.todo_list.repository.user.UserRepository;
+import com.thoughtworks.todo_list.repository.user.UserRepositoryImpl;
 
 import static org.mockito.Mockito.mock;
 

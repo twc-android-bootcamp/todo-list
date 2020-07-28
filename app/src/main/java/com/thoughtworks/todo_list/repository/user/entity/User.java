@@ -1,4 +1,4 @@
-package com.thoughtworks.myapplication.repository.user.entity;
+package com.thoughtworks.todo_list.repository.user.entity;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
@@ -8,15 +8,15 @@ import androidx.room.PrimaryKey;
 public class User {
     @PrimaryKey
     @NonNull
-    private String id;
+    private int id;
     private String name;
     private String password;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

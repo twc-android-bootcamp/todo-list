@@ -1,4 +1,4 @@
-package com.thoughtworks.myapplication.ui.login;
+package com.thoughtworks.todo_list.ui.login;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,9 +14,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.thoughtworks.myapplication.MainApplication;
-import com.thoughtworks.myapplication.R;
-import com.thoughtworks.myapplication.repository.user.UserRepository;
+import com.thoughtworks.todo_list.MainApplication;
+import com.thoughtworks.todo_list.R;
+import com.thoughtworks.todo_list.repository.user.UserRepository;
 
 public class LoginActivity extends AppCompatActivity {
     private LoginViewModel loginViewModel;
@@ -91,7 +91,6 @@ public class LoginActivity extends AppCompatActivity {
             loadingProgressBar.setVisibility(View.VISIBLE);
             loginViewModel.login(usernameEditText.getText().toString(),
                     passwordEditText.getText().toString());
-            new Thread(() -> System.out.println("***********************")).start();
         });
     }
 
