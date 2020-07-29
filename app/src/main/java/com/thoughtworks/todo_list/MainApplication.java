@@ -6,7 +6,7 @@ import androidx.room.Room;
 
 import com.thoughtworks.todo_list.repository.AppDatabase;
 import com.thoughtworks.todo_list.repository.user.UserDataSource;
-import com.thoughtworks.todo_list.repository.user.UserRepository;
+import com.thoughtworks.todo_list.ui.login.UserRepository;
 import com.thoughtworks.todo_list.repository.user.UserRepositoryImpl;
 
 public class MainApplication extends Application {

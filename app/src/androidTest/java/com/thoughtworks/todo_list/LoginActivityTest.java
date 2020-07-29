@@ -4,7 +4,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.rule.ActivityTestRule;
 
-import com.thoughtworks.todo_list.repository.user.UserRepository;
+import com.thoughtworks.todo_list.ui.login.UserRepository;
 import com.thoughtworks.todo_list.repository.user.entity.User;
 import com.thoughtworks.todo_list.repository.utils.Encryptor;
 import com.thoughtworks.todo_list.ui.login.LoginActivity;
@@ -40,6 +40,7 @@ public class LoginActivityTest {
     public void should_login_successfully_when_login_given_correct_username_and_password() {
         MainApplication applicationContext = (MainApplication) InstrumentationRegistry.getInstrumentation().getTargetContext().getApplicationContext();
         UserRepository userRepository = applicationContext.userRepository();
+
         User user = new User();
         user.setId(1);
         user.setPassword(Encryptor.md5("123456"));
