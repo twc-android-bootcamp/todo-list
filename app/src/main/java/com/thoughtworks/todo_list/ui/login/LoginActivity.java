@@ -29,6 +29,7 @@ public class LoginActivity extends AppCompatActivity {
         final EditText usernameEditText = findViewById(R.id.username);
         final EditText passwordEditText = findViewById(R.id.password);
         final Button loginButton = findViewById(R.id.login);
+        final Button createButton = findViewById(R.id.create);
         final ProgressBar loadingProgressBar = findViewById(R.id.loading);
 
         loginViewModel.observeLoginFormState(this, loginFormState -> {
@@ -84,6 +85,10 @@ public class LoginActivity extends AppCompatActivity {
                         passwordEditText.getText().toString());
             }
             return false;
+        });
+
+        createButton.setOnClickListener(v->{
+            Toast.makeText(getApplicationContext(), "aaaaa", Toast.LENGTH_LONG).show();
         });
 
         loginButton.setOnClickListener(v -> {

@@ -91,4 +91,12 @@ public class LoginActivityTest {
         onView(withText(R.string.login_failed_username)).inRoot(withDecorView(not(is(mActivityRule.getActivity().getWindow().getDecorView()))))
                 .check(matches(isDisplayed()));
     }
+
+    @Test
+    public void test() {
+        MainApplication applicationContext = (MainApplication) InstrumentationRegistry.getInstrumentation().getTargetContext().getApplicationContext();
+        onView(withId(R.id.create)).perform(click());
+        onView(withText("aaaaa")).inRoot(withDecorView(not(is(mActivityRule.getActivity().getWindow().getDecorView()))))
+                .check(matches(isDisplayed()));
+    }
 }
